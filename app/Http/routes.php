@@ -20,3 +20,11 @@ Route::get('/main', 'MainController@index');
 Route::auth();
 
 Route::get('/home', 'HomeController@index');
+
+//Test
+Route::controller('/meme','MemeController');
+
+
+//Debug routes
+Route::get('/debug/gd', 'MainController@getGDInfo');
+

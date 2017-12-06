@@ -14,9 +14,11 @@ class MainController extends Controller {
 //    }
 
     public function index(Request $request) {
-
         return view('main.index');
-
     }
-
+    
+    public function getGDInfo(Request $request) {
+        $inf = gd_info();
+        return $inf;
+    }
 }
