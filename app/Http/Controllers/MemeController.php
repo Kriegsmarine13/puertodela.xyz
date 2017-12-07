@@ -82,7 +82,7 @@ class MemeController extends Controller {
             if(move_uploaded_file($source,$img)) {
                 $sql = DB::connection('mysql')->insert('insert into memegen(id, img, text, font, color) VALUES (0,?,?,?,?)', [$img, $text, $font, $color]);
 
-                //Здесь идёт чудесная спизженная магия, призванная переносить текст, если он не влезает в картинку
+                //Здесь идёт чудесная чужая магия, призванная переносить текст, если он не влезает в картинку
                 //Работает через жопу, только для выравнивания по левому краю
                 $arr = explode(' ', $text);
                 $ret = "";
