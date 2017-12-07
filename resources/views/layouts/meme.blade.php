@@ -8,7 +8,7 @@
 <body>
 <div style="text-align: center;display:block;">
     Страница создания ваших мемчиков<br>
-    Загрузи картиночку в формате JPEG, GIF, PNG, SWF, TIFF и JPEG2000 и РАЗМЕРОМ НЕ БОЛЕЕЕ 800х800 пикселей<br>
+    Загрузи картиночку в формате JPEG, GIF или PNG и РАЗМЕРОМ НЕ БОЛЕЕЕ 800х800 пикселей<br>
     А ещё не тяжелее 500кб
 </div>
 @yield('picture')
@@ -23,7 +23,7 @@
                 <option value="Times New Romance">Times New Romance</option>
             </optgroup>
             <optgroup label="English\Russian">
-                <option value="ansellartist">Cansellartist</option>
+                <option value="ansellarist">Cansellarist</option>
                 <option value="ds_vtcorona_cyr">DS Vtcorona Cyr</option>
                 <option value="moonchild">Moon Child</option>
             </optgroup>
