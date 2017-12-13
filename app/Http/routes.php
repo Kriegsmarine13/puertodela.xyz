@@ -21,6 +21,9 @@ Route::auth();
 
 Route::get('/home', 'HomeController@index');
 
+//Admin Routes
+Route::controller('/admin','AdminController',['middleware'=>'auth']);
+
 //Test
 Route::controller('/meme','MemeController');
 

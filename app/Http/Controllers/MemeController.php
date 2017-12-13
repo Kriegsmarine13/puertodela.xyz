@@ -26,6 +26,7 @@ class MemeController extends Controller {
 
         //Получаем из массива
         $data[] = (array)$getImg[0];
+        echo json_encode($data);
 
         //Создаем кнопки соц сетей
         $buttons = $this->mediaButtons($uriRaw[self::TARGET_IMG]);
