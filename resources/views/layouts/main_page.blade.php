@@ -2,7 +2,8 @@
 <html>
     <head>
         <title>Главная Страница|Пуэрто де ла Куз</title>
-        <link href="styles.css" rel="stylesheet" type="text/css">
+        <link href="/resources/css/styles.css" rel="stylesheet" type="text/css">
+        @yield('metrics')
     </head>
     <body>
         @yield('content')

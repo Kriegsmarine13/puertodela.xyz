@@ -1,6 +1,6 @@
-@extends('admin.index')
+@extends('layouts.admin_main')
 
 @section('status')
-    PHP Version: {{$phpVer}}
-    MySQL Version: {{$mysqlVersion}}
-@show
+    PHP Version: {{isset($phpVer) ? $phpVer : "Can't access variable"}}<br>
+    MySQL Version: {{isset($mysqlVersion) ? $mysqlVersion : "Can't access variable"}}
+@endsection

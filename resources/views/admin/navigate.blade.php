@@ -1,4 +1,4 @@
-@extends('admin.index')
+@extends('layouts.admin_main')
 
 @section('navigation')
 <div class="admin_navigation">

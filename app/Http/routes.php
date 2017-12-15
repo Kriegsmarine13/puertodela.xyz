@@ -15,8 +15,6 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/main', 'MainController@index');
-
 Route::auth();
 
 Route::get('/home', 'HomeController@index');
@@ -24,9 +22,9 @@ Route::get('/home', 'HomeController@index');
 //Admin Routes
 Route::controller('/admin','AdminController',['middleware'=>'auth']);
 
-//Test
+//Actual Routes
 Route::controller('/meme','MemeController');
-
+Route::controller('/main','MainController');
 
 //Debug routes
 Route::get('/debug/gd', 'MainController@getGDInfo');

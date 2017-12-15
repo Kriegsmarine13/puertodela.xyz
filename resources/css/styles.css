@@ -1,0 +1,18 @@
+body{
+    background-color: #440260;
+    color: #ff00c7;
+}
+
+.article_main img{
+    width: 100%;
+}
+
+.article_main{
+    display: block;
+    float: left;
+    width: 30%;
+    border: 1px dashed lightgreen;
+    border-radius: 20px;
+    padding: 10px;
+    margin-left: 2%;
+}
