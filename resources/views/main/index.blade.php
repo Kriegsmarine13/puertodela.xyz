@@ -2,12 +2,12 @@
 
 @section('content')
         @foreach($data as $articleItem)
-            <div class="article_main">
+            <div class="article_main neon glow">
                 {{ $articleItem->id }}<br>
-                {{ $articleItem->url }}<br>
-                {{ $articleItem->title }}<br>
+                <a href="/main/news/{{ $articleItem->url }}">{{ $articleItem->title }}</a><br>
+                <br>
                 {!! $articleItem->news_text !!}<br>
-                <img src="{{ $articleItem->img }}"><br><br><br>
+                <img src="/{{ $articleItem->img }}">
             </div>
         @endforeach
 @endsection

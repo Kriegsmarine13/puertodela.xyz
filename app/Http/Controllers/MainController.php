@@ -21,6 +21,27 @@ class MainController extends Controller
         ]);
     }
 
+    public function getNews($url)
+    {
+        $metrics = $this->includeMetrics();
+
+        //Находим новость по url
+        $uri = $_SERVER['REQUEST_URI'];
+        $uri = explode('/', $uri);
+        $url = array_pop($uri);
+        //На случай природного дебилизма постящего
+        //Если в url вставлен пробел, в искомой строке меняем юникод на пробел
+        $url = str_replace('%20', ' ', $url);
+
+        $data = DB::table('news')->where('url','=',$url)->get();
+
+        return view('main.single',[
+            'metrics' => $metrics,
+            'data' => $data
+        ]);
+
+    }
+
     public function getTest()
     {
 //        $name = 'jopa';

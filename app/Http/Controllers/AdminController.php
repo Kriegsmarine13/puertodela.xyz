@@ -67,6 +67,7 @@ class AdminController extends Controller
     {
         $title = $_POST['title'];
         $url = $_POST['url'];
+        $url = str_replace(' ', '-',$url);
         $newsBody = $_POST['maintext'];
         $imgFolder = 'resources/news_images/';
         $date = date("Y-m-d H:i:s");
