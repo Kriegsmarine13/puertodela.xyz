@@ -6,7 +6,6 @@
                 {{ $articleItem->id }}<br>
                 <a href="/main/news/{{ $articleItem->url }}">{{ $articleItem->title }}</a><br>
                 <br>
-                {!! $articleItem->news_text !!}<br>
                 <img src="/{{ $articleItem->img }}">
             </div>
         @endforeach

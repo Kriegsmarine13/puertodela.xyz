@@ -13,3 +13,33 @@
     border: 2px dashed red;
     margin-left: 5%;
 }
+
+.admin_news_list {
+    display: block;
+    float: left;
+    width: 75%;
+    margin-left: 2%;
+    border: 2px dashed blueviolet;
+    padding: 5px;
+}
+
+.admin_news_list_item {
+    display: inline-block;
+    border: 1px solid greenyellow;
+    padding: 5px;
+    width: 98%;
+    margin-bottom: 1%;
+    float: left;
+    clear: both;
+}
+
+.admin_news_list_item_inner {
+    display: inline-block;
+    width: 30%;
+    vertical-align: top;
+    word-wrap: break-word;
+}
+
+.admin_news_list_item_inner > img {
+    width: 100%;
+}

@@ -10,11 +10,12 @@
     <ul>Меню
         <li><a href="/admin">Главная Страница</a></li>
         <li><a href="/admin/add-news">Добавить статью</a></li>
-        <li><a href="#">Список статей</a></li>
+        <li><a href="/admin/news-list">Список статей</a></li>
     </ul>
 </div>
 @yield('navigation')
 @yield('add_news_form')
 @yield('status')
+@yield('news_list')
 </body>
 </html>

@@ -73,7 +73,7 @@ class AdminController extends Controller
         $date = date("Y-m-d H:i:s");
 
         $imageReady = $imgFolder . basename($_FILES['image']['name']);
-        $imageFileType = pathinfo($imageReady, PATHINFO_EXTENSION);
+//        $imageFileType = pathinfo($imageReady, PATHINFO_EXTENSION);
 
 
         if(move_uploaded_file($_FILES['image']['tmp_name'],$imageReady))
@@ -84,7 +84,7 @@ class AdminController extends Controller
                     'title' => $title,
                     'news_text' => $newsBody,
                     'img' => $imageReady,
-                    'time' => $date]
+                    'time' => $date]  //Добавить поле активности и темы
             );
             header('Refresh: 3; url=/admin/main');
             echo "Файл загружен! Возврат на главную страницу...";
@@ -92,6 +92,28 @@ class AdminController extends Controller
             header('Refresh: 3; url=/admin/add-news');
             echo "Запрос не ушёл";
         }
+    }
+
+    public function getNewsList()
+    {
+        $sql = DB::table('news')->get();
+
+        return view('admin.news_list',[
+            'data' => $sql
+        ]);
+    }
+
+    public function getEditNews($url)
+    {
+        $uri = $_SERVER['REQUEST_URI'];
+        $uri = explode('/', $uri);
+        $url = array_pop($uri);
+
+        $sql = DB::table('news')->where('url', '=', $url)->get();
+
+        return view('admin.add_news', [
+           'data' => $sql
+        ]);
     }
 
     public function basicInfo()

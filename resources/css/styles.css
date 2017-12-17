@@ -3,6 +3,13 @@ body{
     color: #ff00c7;
 }
 
+@font-face {
+    font-family: 'Neon Text';
+    src:url('/resources/fonts/AA-Neon.ttf');
+    font-weight: normal;
+    font-style: normal;
+}
+
 .grid {
     display: block;
     width: 80%;
@@ -20,6 +27,7 @@ body{
 
 .article_main{
     display: inline-block;
+    font-family:"Neon Text";
     float: left;
     width: 28%;
     border: 3px solid rgba(255, 0, 199, .5);
@@ -28,6 +36,14 @@ body{
     padding: 10px;
     margin-left: 1%;
     margin-top: 1%;
+}
+
+.article_main > a {
+    color: #ff00c7;
+}
+
+.article_main > a:visited {
+    color: #360470;
 }
 
 .article_main > *:nth-child(4n+1) {
