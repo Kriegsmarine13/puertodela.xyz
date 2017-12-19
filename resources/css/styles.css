@@ -54,6 +54,7 @@ body{
 
 .article_main img{
     width: 100%;
+    border-radius: 20px;
 }
 
 .boxShadow{
@@ -169,4 +170,34 @@ body{
 
 .single-image > img{
     width: 80%;
+    border-radius: 20px;
+}
+
+.top-feed {
+    display: block;
+    height: 100px;
+    margin-left: 3%;
+}
+
+.top-feed-item {
+    display: inline-block;
+    height: 100%;
+    width: 19%;
+    border: 1px solid white;
+}
+
+.top-feed-item img {
+    height: 100px;
+    width:100%;
+}
+
+.top-feed-item-text {
+    visibility: hidden;
+    position: absolute;
+}
+
+.top-feed-item-text:hover {
+    visibility: visible;
+    font-size: 14pt;
+    color: white;
 }
