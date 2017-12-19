@@ -41,10 +41,9 @@
         <title>Laravel</title>
 
         <script src="/resources/js/jquery-3.2.1.min.js"></script>
-        <script src="/resources/js/openAnimate.js"></script>
         <link href="/resources/bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css" media="all">
         <link href="https://fonts.googleapis.com/css?family=Lato:100" rel="stylesheet" type="text/css">
-        {{--<link href="/resources/css/main.css" rel="stylesheet" type="text/css">--}}
+        <link href="/resources/css/styles.css" rel="stylesheet" type="text/css">
 
         <style>
             html, body {
@@ -78,7 +77,7 @@
     </head>
     <body>
         <div class="container">
-            <div class="content">
+            <div class="neon glow">
                 <div class="title">Welcome to Puerto de la Kuz!(local)<br></div>
             </div>
         </div>

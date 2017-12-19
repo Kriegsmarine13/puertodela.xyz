@@ -9,6 +9,7 @@ use Session;
 
 class AdminController extends Controller
 {
+    const DEFAULT_ACTIVE_STATE = 1;
 
     public function __construct()
     {
@@ -71,6 +72,8 @@ class AdminController extends Controller
         $newsBody = $_POST['maintext'];
         $imgFolder = 'resources/news_images/';
         $date = date("Y-m-d H:i:s");
+        $active = self::DEFAULT_ACTIVE_STATE;
+        $theme = $_POST['theme'];
 
         $imageReady = $imgFolder . basename($_FILES['image']['name']);
 //        $imageFileType = pathinfo($imageReady, PATHINFO_EXTENSION);
@@ -79,12 +82,14 @@ class AdminController extends Controller
         if(move_uploaded_file($_FILES['image']['tmp_name'],$imageReady))
         {
             $sql = DB::table('news')->insert(
-                ['id' => 0,
+                [
                     'url' => $url,
                     'title' => $title,
                     'news_text' => $newsBody,
                     'img' => $imageReady,
-                    'time' => $date]  //Добавить поле активности и темы
+                    'time' => $date,
+                    'active' => $active,
+                    'main_theme' => $theme]
             );
             header('Refresh: 3; url=/admin/main');
             echo "Файл загружен! Возврат на главную страницу...";
@@ -105,9 +110,7 @@ class AdminController extends Controller
 
     public function getEditNews($url)
     {
-        $uri = $_SERVER['REQUEST_URI'];
-        $uri = explode('/', $uri);
-        $url = array_pop($uri);
+        $url = $this->getUri();
 
         $sql = DB::table('news')->where('url', '=', $url)->get();
 
@@ -116,12 +119,112 @@ class AdminController extends Controller
         ]);
     }
 
+    public function postEditNews()
+    {
+        $id = $_POST['id'];
+        $title = $_POST['title'];
+        $url = $_POST['url'];
+        $url = str_replace(' ', '-',$url);
+        $newsBody = $_POST['maintext'];
+        $imgFolder = 'resources/news_images/';
+        $date = date("Y-m-d H:i:s");
+        $active = self::DEFAULT_ACTIVE_STATE;
+        $theme = $_POST['theme'];
+
+        $imageReady = $imgFolder . basename($_FILES['image']['name']);
+
+        if(empty($_FILES['image']))
+        {
+            if(move_uploaded_file($_FILES['image']['tmp_name'],$imageReady))
+            {
+                $imgQuery = DB::table('news')->where('id','=',$id)->update(
+                    [
+                        'url' => $url,
+                        'title' => $title,
+                        'news_text' => $newsBody,
+                        'img' => $imageReady,
+                        'time' => $date,
+                        'active' => $active,
+                        'main_theme' => $theme]
+                );
+                header('Refresh: 3; url=/admin/news-list');
+                echo "Новость обновлена вместе с изображением! Перенаправление...";
+            } else {
+                echo "Ошибка обновления изображения!";
+            }
+        } else {
+            $imgQuery = DB::table('news')->where('id','=',$id)->update(
+                [
+                    'url' => $url,
+                    'title' => $title,
+                    'news_text' => $newsBody,
+                    'time' => $date,
+                    'active' => $active,
+                    'main_theme' => $theme
+                ]);
+            header('Refresh: 3; url=/admin/news-list');
+            echo "Новость обновлена! Перенаправление...";
+        }
+    }
+
+    public function getDeactivate($url)
+    {
+        $url = $this->getUri();
+
+        $sql = DB::table('news')->where('url','=',$url)->update([
+            'active' => 0
+        ]);
+
+        if($sql)
+        {
+            header('Refresh: 3; url= /admin/news-list');
+            echo "Новость деактивирована! Перенаправление...";
+        } else { echo "Ошибка! Обратитесь к админу"; }
+    }
+
+    public function getActivate($url)
+    {
+        $url = $this->getUri();
+
+        $sql = DB::table('news')->where('url','=',$url)->update([
+            'active' => 1
+        ]);
+
+        if($sql)
+        {
+            header('Refresh: 3; url= /admin/news-list');
+            echo "Новость активирована! Перенаправление...";
+        } else { echo "Ошибка! Обратитесь к админу"; }
+    }
+
+    public function getDelete($url)
+    {
+        $url = $this->getUri();
+
+        $sql = DB::table('news')->where('url','=',$url)->delete();
+
+        if($sql)
+        {
+            header('Refresh: 3; url=/admin/news-list');
+            echo "Новость удалена! Перенаправление...";
+        }
+    }
+
     public function basicInfo()
     {
         $phpVer = phpversion();
         $results = DB::select( DB::raw("select version()"));
         $mysqlVersion = $results[0]->{'version()'};
         return view('admin.info',['phpVer'=>$phpVer,'mysqlVersion'=>$mysqlVersion]);
+    }
+
+    public function getUri()
+    {
+        $uri = $_SERVER['REQUEST_URI'];
+        $uri = explode('/', $uri);
+        $url = array_pop($uri);
+
+        return $url;
     }
 
 }

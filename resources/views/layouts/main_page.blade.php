@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html>
     <head>
+        <meta name="csrf-token" content="{{csrf_token()}}">
         <title>Главная Страница|Пуэрто де ла Куз</title>
         <link href="/resources/css/styles.css" rel="stylesheet" type="text/css">
         <script src="/resources/js/jquery-3.2.1.min.js"></script>

@@ -14,7 +14,7 @@ class MainController extends Controller
     {
         $metrics = $this->includeMetrics();
 
-        $sql = DB::table('news')->get();
+        $sql = DB::table('news')->where('active', '=', 1)->get();
         return view('main.index',[
             'metrics'=>$metrics,
             'data'=>$sql
@@ -95,6 +95,43 @@ class MainController extends Controller
     </script>";
 
         return view('metrika.metrics',['yandex_metrika'=>$yandexMetrika, 'google_analytics'=>$googleAnalytics]);
+    }
+
+    public function recieveRates($url)
+    {
+
+        $rating = DB::table('news')->where('url',$url)->select('rating')->get();
+
+        return $rating;
+    }
+
+    public function postVote($url)
+    {
+        $this->middleware('auth');
+        $vote = $_POST['data'];
+        $rating = $this->recieveRates($this->url());
+
+        if($vote == 'upvote')
+        {
+            DB::table('news')->where('url','=',$url)->increment('rating');
+        } elseif ($vote == 'downvote') {
+            DB::table('news')->where('url','=',$url)->decrement('rating');
+        }
+
+
+        foreach($rating as $rate){
+            $newRating = $rate->rating;
+        }
+        echo $newRating;
+    }
+
+    public function url()
+    {
+        $uri = $_SERVER['REQUEST_URI'];
+        $uri = explode('/', $uri);
+        $url = array_pop($uri);
+
+        return $url;
     }
 
 }

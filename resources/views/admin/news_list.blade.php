@@ -11,8 +11,12 @@
                 </div>
                 <div class="admin_news_list_item_inner">
                     <a href="edit-news/{{$item->url}}">Изменить</a><br>
-                    <a href="deactivate-news">Деактивировать</a><br>
-                    <a href="delete-news">(!!!ЗОНА РИСКА!!!)<br>Удалить новость<br>(!!!ЗОНА РИСКА!!!)</a><br>
+                    @if($item->active == 1)
+                        <a href="deactivate/{{$item->url}}">Деактивировать</a><br>
+                    @else
+                        <a href="activate/{{$item->url}}">Активировать</a><br>
+                    @endif
+                    <br><br><a href="delete/{{$item->url}}">(!!!ЗОНА РИСКА!!!)<br>Удалить новость<br>(!!!ЗОНА РИСКА!!!)</a><br>
                 </div>
                 <div class="admin_news_list_item_inner">
                     <img src="/{{$item->img}}"><br>

@@ -10,6 +10,41 @@ body{
     font-style: normal;
 }
 
+@font-face {
+    font-family: "Vermin Vibes";
+    src:url('/resources/fonts/10924.otf');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: "D Determination";
+    src:url('/resources/fonts/10979.otf');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: "Xenoa";
+    src:url('/resources/fonts/10968.ttf');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: "Upheaval";
+    src:url('/resources/fonts/10923.otf');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: "Xanthus";
+    src:url('/resources/fonts/10623.ttf');
+    font-weight: normal;
+    font-style: normal;
+}
+
 .grid {
     display: block;
     width: 80%;
@@ -30,7 +65,7 @@ body{
     font-family:"Neon Text";
     float: left;
     width: 28%;
-    border: 3px solid rgba(255, 0, 199, .5);
+    border: 3px solid rgba(255, 0, 199, .3);
     .boxShadow();
     border-radius: 20px;
     padding: 10px;
@@ -111,4 +146,26 @@ body{
     to {
         text-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 15px #fff, 0 0 20px #ff00de, 0 0 35px #ff00de, 0 0 40px #ff00de, 0 0 50px #ff00de, 0 0 75px #ff00de;
     }
+}
+
+.single-title {
+    font-family:"Neon Text";
+    font-size: 48px;
+}
+
+.single-text {
+    display: inline-block;
+    width: 90%;
+    margin-top: 5%;
+    font-family:"Vermin Vibes";
+    font-size: 14pt;
+}
+
+.single-image {
+    display: inline-block;
+    margin-top: 10%;
+}
+
+.single-image > img{
+    width: 80%;
 }
