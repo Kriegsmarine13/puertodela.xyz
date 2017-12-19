@@ -63,6 +63,7 @@ body{
 .article_main{
     display: inline-block;
     font-family:"Neon Text";
+    font-size: 16pt;
     float: left;
     width: 28%;
     border: 3px solid rgba(255, 0, 199, .3);
