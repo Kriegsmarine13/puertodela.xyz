@@ -2,6 +2,7 @@
 <html>
 <head>
 @yield('meta')
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Create your meme!</title>
     <script type="text/javascript" src="https://vk.com/js/api/share.js?95" charset="windows-1251"></script>
 </head>

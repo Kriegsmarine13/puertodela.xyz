@@ -15,6 +15,8 @@ class AdminController extends Controller
     {
         $this->middleware('adm');
     }
+
+    //Routes
     
     public function getIndex()
     {
@@ -209,6 +211,8 @@ class AdminController extends Controller
             echo "Новость удалена! Перенаправление...";
         }
     }
+
+    //work functions
 
     public function basicInfo()
     {

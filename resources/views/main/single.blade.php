@@ -1,17 +1,18 @@
 @extends('layouts.main_page')
 
+@section('title')
+    @foreach($data as $item)
+        <title>{{$item->title}}</title>
+    @endforeach
+@endsection
+
 @section('single')
     @foreach($data as $item)
         <div class="single-title">{{$item->title}}</div>
         <div class="single-text">
             {!!$item->news_text!!}
+            <br>Оцените статью<br>
         </div>
-        <div class="single-image">
-            <img src="/{{$item->img}}"><br>
-        </div>
-        <br>
-        <a href="/main">Вернуться назад</a><br>
-        <br>Оцените статью<br>
         <script>
             $.ajaxSetup({
                 headers: {
@@ -33,6 +34,7 @@
                     },
                     cache: false,
                     success: function(html){
+                        console.log(data,id);
                         $('#rating').html(html);
                     },error:function(){
                         console.log("failed");
@@ -49,5 +51,9 @@
                 <button form="voting" id="downvote" name="downvote" value="downvote" onclick="return post()">-</button><br>
             </form>
         </div>
+        <div class="single-image">
+            <img src="/{{$item->img}}"><br>
+        </div>
+        <a class="return-button neon" href="/main">На<br><br>главную</a><br>
     @endforeach
 @endsection

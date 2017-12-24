@@ -2,7 +2,10 @@
 <html>
     <head>
         <meta name="csrf-token" content="{{csrf_token()}}">
-        <title>Главная Страница|Пуэрто де ла Куз</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        @yield('title')
+        <title>Главная страница Пуэрто де ля Куз</title>
         <link href="/resources/css/styles.css" rel="stylesheet" type="text/css">
         <script src="/resources/js/jquery-3.2.1.min.js"></script>
         <script src="/resources/js/masonry.pkgd.min.js" type="text/javascript"></script>
